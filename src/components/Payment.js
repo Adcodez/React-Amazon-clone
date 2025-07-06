@@ -34,6 +34,7 @@ const Payment = () => {
         const total = Math.round(getBasketTotal() * 100);
         console.log("🧮 Basket total:", total);
         const response = await axios.post("/payments/create", { total });
+        console.log("💳 Stripe worked response:", response);
         console.log("💳 Stripe client secret:", response.data.clientSecret);
         setClientSecret(response.data.clientSecret);
       } catch (err) {
