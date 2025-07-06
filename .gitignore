@@ -11,6 +11,8 @@
 .env.*.local
 .env.development
 .env.production
+.env
+
 
 # Supabase config/secrets
 /supabase/config.json
