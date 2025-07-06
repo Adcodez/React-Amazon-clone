@@ -74,7 +74,7 @@ const Products = () => {
       upsertProduct(product);
       addProduct(product);
     });
-  }, []);
+  }, [addProduct,productList]);
 
   return (
     <section className="px-4 sm:px-6 lg:px-12 pt-2">

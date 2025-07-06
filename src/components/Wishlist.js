@@ -8,7 +8,7 @@ const Wishlist = () => {
 
   // map wishlist ids to live product info
 
-const wishlistProducts = wishlist
+  wishlist
   .map((wish) => allProducts.find((p) => String(p.id) === String(wish.id))
   )
   .filter(Boolean); // remove any nulls if product isn't found

@@ -1,9 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import useShoppingStore from "../../context/useShoppingStore";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
-import ShoppingContext from "../../context/shopping/shoppingContext";
 import useWishlistStore from "../../context/useWishlistStore";
 import { auth } from "../../Firebase";
 const Header = () => {
