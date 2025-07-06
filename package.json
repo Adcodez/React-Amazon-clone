@@ -23,6 +23,9 @@
     "web-vitals": "^2.1.4",
     "zustand": "^5.0.6"
   },
+  "engines": {
+  "node": "18.x"
+},
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
