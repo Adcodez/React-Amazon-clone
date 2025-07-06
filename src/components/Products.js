@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useMemo } from "react";
 import Product from "./Product";
 import { upsertProduct } from "../utils/productApi";
 import "./Products.css";
@@ -8,7 +8,7 @@ const Products = () => {
   const products = useShoppingStore((state) => state.products);
   const addProduct = useShoppingStore((state) => state.addProduct);
 
-  const productList = [
+  const productList = useMemo(() =>( [
     {
       id: "1",
       title: "Wireless Gaming Mouse",
@@ -66,7 +66,7 @@ const Products = () => {
       rating: 3,
     }
 
-  ];
+  ]), []);
   //Lets Friggginnnnn GOOOOOOOOOOOOOOO!!!
 
   useEffect(() => {
