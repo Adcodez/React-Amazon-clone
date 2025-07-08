@@ -58,3 +58,5 @@ Thumbs.db
 # CI / misc
 /.firebase/
 netlify.toml
+# Local Netlify folder
+.netlify
