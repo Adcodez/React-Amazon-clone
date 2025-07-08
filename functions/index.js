@@ -10,7 +10,7 @@
 import {onRequest} from "firebase-functions/v2/https";
 import express from "express";
 import cors from "cors";
-const Stripe = (await import("stripe")).default;
+import Stripe from "stripe"; // ✅ if "type": "module" is set
 
 
 // API
@@ -36,6 +36,7 @@ app.get("/", (request, response) => response.status(200).send("hello world"));
 
 app.post("/payments/create", async (request, response) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
 console.log("🔐 Stripe Key:", process.env.STRIPE_SECRET_KEY);
   response.set("Access-Control-Allow-Origin", "*");
   const total = request.body.total;
