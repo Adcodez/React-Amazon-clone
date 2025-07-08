@@ -35,7 +35,7 @@ app.options("/{*splat}", (req, res) => {
 app.get("/", (request, response) => response.status(200).send("hello world"));
 
 app.post("/payments/create", async (request, response) => {
-  const stripe = new Stripe("sk_test_51Rc3u0FVZWznpKv5ZAhylIG97jbOg7VL98BW88VldhZ0KrymshwOPJJLpP1XLoVluRafR7IT8LLi8WKh4Fw7odgn00Igzm2yFo");
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 console.log("🔐 Stripe Key:", process.env.STRIPE_SECRET_KEY);
   response.set("Access-Control-Allow-Origin", "*");
