@@ -9,6 +9,8 @@ netlify/
 
 # Local environment variables
 .env
+stripe-backend/.env
+
 .env.local
 .env.*.local
 .env.development
