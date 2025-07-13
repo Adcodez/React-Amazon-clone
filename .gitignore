@@ -5,6 +5,7 @@ functions/node_modules/
 # Build output
 /dist/
 /build/
+netlify/
 
 # Local environment variables
 .env
