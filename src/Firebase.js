@@ -4,10 +4,7 @@ import {
   // signInWithEmailAndPassword,
   // createUserWithEmailAndPassword,
 } from "firebase/auth";
-import {
-  getFirestore,
-  
-} from "firebase/firestore"; // Now includes necessary Firestore helpers
+import { getFirestore } from "firebase/firestore"; // Now includes necessary Firestore helpers + database
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

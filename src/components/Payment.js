@@ -33,7 +33,13 @@ const Payment = () => {
       try {
         const total = Math.round(getBasketTotal() * 100);
         console.log("🧮 Basket total:", total);
-        const response = await axios.post("/payments/create", { total });
+        const response = await axios.post(
+          "https://your-render-service-name.onrender.com/payments/create",
+          {
+            total: Math.round(getBasketTotal() * 100),
+          }
+        );
+
         console.log("💳 Stripe worked response:", response);
         console.log("💳 Stripe client secret:", response.data.clientSecret);
         setClientSecret(response.data.clientSecret);
@@ -72,35 +78,34 @@ const Payment = () => {
       setSucceeded(true);
       setError(null);
       emptyBasket();
-     try {
-    const { data, error } = await supabase.from("orders").insert([
-      {
-        user_id: user?.uid,
-        basket: basket,
-        amount: paymentIntent.amount,
-        created_at: new Date().toISOString(),
-      },
-    ]);
+      try {
+        const { data, error } = await supabase.from("orders").insert([
+          {
+            user_id: user?.uid,
+            basket: basket,
+            amount: paymentIntent.amount,
+            created_at: new Date().toISOString(),
+          },
+        ]);
 
-    console.log("📨 Supabase insert response:", data, error);
+        console.log("📨 Supabase insert response:", data, error);
 
-    if (error) {
-      console.error("❌ Supabase insert failed:", error.message);
-    } else {
-      console.log("✅ Order inserted into Supabase successfully!");
+        if (error) {
+          console.error("❌ Supabase insert failed:", error.message);
+        } else {
+          console.log("✅ Order inserted into Supabase successfully!");
+        }
+      } catch (supabaseError) {
+        console.error("🔥 Supabase catch block error:", supabaseError.message);
+      }
+
+      navigate("/orders");
+    } catch (err) {
+      console.error("❌ Stripe confirmCardPayment error:", err.message);
+      setError(err.message);
+    } finally {
+      setProcessing(false);
     }
-  } catch (supabaseError) {
-    console.error("🔥 Supabase catch block error:", supabaseError.message);
-  }
-
-  navigate("/orders");
-} catch (err) {
-  console.error("❌ Stripe confirmCardPayment error:", err.message);
-  setError(err.message);
-} finally {
-  setProcessing(false);
-}
-
   };
 
   const handleChange = (event) => {
