@@ -34,7 +34,7 @@ const Payment = () => {
         const total = Math.round(getBasketTotal() * 100);
         console.log("🧮 Basket total:", total);
         const response = await axios.post(
-          "https://your-render-service-name.onrender.com/payments/create",
+          "https://react-amazon-clone-9skn.onrender.com/payments/create",
           {
             total: Math.round(getBasketTotal() * 100),
           }
