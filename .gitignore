@@ -64,3 +64,4 @@ Thumbs.db
 netlify.toml
 # Local Netlify folder
 .netlify
+node_modules
