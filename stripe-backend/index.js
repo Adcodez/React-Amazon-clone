@@ -15,13 +15,8 @@ app.use(
 
 app.use(express.json());
 
-// OPTIONS preflight (CORS)
-app.options("/*", (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.set("Access-Control-Allow-Headers", "Content-Type");
-  res.status(204).send("");
-});
+
+
 
 // Test route
 app.get("/", (req, res) => res.status(200).send("✨ Render backend up and running"));
