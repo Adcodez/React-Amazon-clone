@@ -8,10 +8,14 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: "https://amazon-klones.netlify.app/", // use your actual Netlify URL
+    origin: [
+      "http://localhost:3000", // local dev
+      "https://amazon-klones.netlify.app" // production
+    ],
     credentials: true
   })
 );
+
 
 app.use(express.json());
 
@@ -22,7 +26,7 @@ app.use(express.json());
 app.get("/", (req, res) => res.status(200).send("✨ Render backend up and running"));
 
 // Stripe payment route
-app.post("/payments/create", async (req, res) => {
+app.get("/payments/create", async (req, res) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   res.set("Access-Control-Allow-Origin", "*");
 

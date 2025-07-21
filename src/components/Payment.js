@@ -102,7 +102,7 @@ const Payment = () => {
       navigate("/orders");
     } catch (err) {
       console.error("❌ Stripe confirmCardPayment error:", err.message);
-      setError(err.message);
+      setError("You are broke😞");//err.message
     } finally {
       setProcessing(false);
     }
